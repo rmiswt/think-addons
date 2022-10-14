@@ -52,8 +52,8 @@ class Service extends \think\Service
             $path = $this->app->request->pathinfo();
             $paths = explode('/', $path);
             if($paths[0] == 'addons'){
-                if (is_file($this->app->addons->getAddonsPath() . $paths[1].'\middleware.php')) {
-                    $this->app->middleware->import(include $this->app->addons->getAddonsPath() .  $paths[1].'\middleware.php', 'route');
+                if (is_file($this->app->addons->getAddonsPath() . $paths[1]."\middleware_{$paths[2]}.php")) {
+                    $this->app->middleware->import(include $this->app->addons->getAddonsPath() .  $paths[1]."\middleware_{$paths[2]}.php", 'route');
                 }
             }
             // 自定义路由
