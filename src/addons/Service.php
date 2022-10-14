@@ -25,7 +25,7 @@ class Service extends \think\Service
         $this->addons_path = $this->getAddonsPath();
         // 加载系统语言包
         Lang::load([
-            $this->app->getRootPath() . '/vendor/zzstudio/think-addons/src/lang/zh-cn.php'
+            $this->app->getRootPath() . '/vendor/rmiswt/think-addons/src/lang/zh-cn.php'
         ]);
         // 自动载入插件
         $this->autoload();
@@ -42,7 +42,6 @@ class Service extends \think\Service
         $this->registerRoutes(function (Route $route) {
             // 路由脚本
             $execute = '\\think\\addons\\Route::execute';
-
             // 注册插件公共中间件
             if (is_file($this->app->addons->getAddonsPath() . 'middleware.php')) {
                 $this->app->middleware->import(include $this->app->addons->getAddonsPath() . 'middleware.php', 'route');
