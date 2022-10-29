@@ -52,12 +52,12 @@ class Service extends \think\Service
             $paths = explode('/', $path);
             if($paths[0] == 'addons'){
                 if($paths[2]){
-                    if (is_file($this->app->addons->getAddonsPath() . $paths[1]."\common.php")) {
-                        include_once $this->app->addons->getAddonsPath() . $paths[1]."\common.php";
+                    if (is_file($this->app->addons->getAddonsPath() . $paths[1].DIRECTORY_SEPARATOR."common.php")) {
+                        include_once $this->app->addons->getAddonsPath() . $paths[1].DIRECTORY_SEPARATOR."common.php";
                     }
                     $module = explode('.',$paths[2])[0];
-                    if (is_file($this->app->addons->getAddonsPath() . $paths[1]."\middleware_{$module}.php")) {
-                        $this->app->middleware->import(include $this->app->addons->getAddonsPath() .  $paths[1]."\middleware_{$module}.php", 'route');
+                    if (is_file($this->app->addons->getAddonsPath() . $paths[1].DIRECTORY_SEPARATOR."middleware_{$module}.php")) {
+                        $this->app->middleware->import(include $this->app->addons->getAddonsPath() .  $paths[1].DIRECTORY_SEPARATOR."middleware_{$module}.php", 'route');
                     }
                 }
             }
